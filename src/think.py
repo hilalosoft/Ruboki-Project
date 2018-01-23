@@ -18,8 +18,13 @@ backward_obst = Twist(Vector3(-0.1,0,0),Vector3(0,0,0))
 right_spin = Twist(Vector3(0,0,0),Vector3(0,0,-1.5))
 left_spin = Twist(Vector3(0,0,0),Vector3(0,0,1.5))
 
+numchar=[]
+
 ninety_left = Twist(Vector3(0,0,0),Vector3(0,0,3.14))
 ninety_right = Twist(Vector3(0,0,0),Vector3(0,0,-3.14))
+
+movement = []
+
 
 goback = False
 goleft = False
@@ -32,8 +37,8 @@ last_obstacle = []
 turn_right = False
 turn_left = False
 bumped = False
-
-
+Base_Position = null
+ 
 obstacles = []
 
 def exit_handler():
@@ -51,12 +56,14 @@ def distance(x1, y1, x2, y2):
 	return math.sqrt(xd * xd + yd * yd)
 
 def decide(status):
-
+	
 	#print status.x
 	#print status.y
 	#print status.left
 	#print status.front
 	#print status.right
+	global count
+	count =0
 	global goback
 	global goleft
 	global goright
@@ -71,6 +78,9 @@ def decide(status):
 	global bumped
 	#dist = 0.0
 
+	if Base_Position == null
+		Base_Position= status.x,status.y
+
 	if not last_obstacle == [] and distance(status.x, status.y, last_obstacle[0], last_obstacle[1]) < 0.3:
 		dist = distance(status.x, status.y, last_obstacle[0], last_obstacle[1])
 		if dist > 0.2 and not goforward:
@@ -84,7 +94,6 @@ def decide(status):
 
 
 	if not bumped:
-
 		for obstacle in obstacles:
 			dist = distance(status.x, status.y, obstacle[0], obstacle[1])
 			if dist < 0.3:
@@ -92,11 +101,21 @@ def decide(status):
 				last_obstacle = (obstacle[0], obstacle[1])
 				bumped = True
 				return
-
-		
 	
 
+
+	#we write in the file all the information about the movement  the position and the desicion made
 	if status.left or status.front or status.right :
+		infile=open("position","r")
+
+
+
+		inputt=open("postition.txt","r")
+		inputt.seek(list[len(list)-2])
+		s=inputt.readline()
+		s.split(",")
+
+		infile.close()
 		last_obstacle = (status.x, status.y)
 		obstacles.append((status.x, status.y))
 		goback = True
@@ -108,13 +127,18 @@ def decide(status):
 		else:
 			turn = "right"
 		goforward = False
-
 	if turn_right:
 		print("Esco a destra")
 		publisher_velocity.publish(right_spin)
 		time.sleep(1.5)
 		turn_right = False
 		goforward = True
+		movement,
+		outfile=open("postition.txt","w")
+		count+=len(status.x,status.y)+len(",rightspin")+len("\n")
+		numchar.append(count)
+		outfile.write(status.x,status.y+",rightspin"+"\n")
+		outfile.close()
 
 	if turn_left:
 		print("Esco a sinistra")
@@ -122,10 +146,20 @@ def decide(status):
 		time.sleep(1.5)
 		turn_left = False
 		goforward = True
+		outfile=open("postition.txt","w")
+		count+=len(status.x,status.y)+len(",leftspin")+len("\n")
+		numchar.append(count)
+		outfile.write(status.x,status.y+",leftspin"+"\n")
+		outfile.close()
 
 	if goback:
 		print("Indietro\n")
 		publisher_velocity.publish(backward)
+		outfile=open("postition.txt","w")
+		count+=len(status.x,status.y)+len(",back")+len("\n")
+		numchar.append(count)
+		outfile.write(status.x,status.y+",back"+"\n")
+		outfile.close()
 		return
 	
 	if left90:
@@ -133,6 +167,11 @@ def decide(status):
 		publisher_velocity.publish(ninety_left)
 		time.sleep(1.2)
 		left90 = False
+		outfile=open("postition.txt","w")
+		count+=len(status.x,status.y)+len(",left90")+len("\n")
+		numchar.append(count)
+		outfile.write(status.x,status.y+",left90"+"\n")
+		outfile.close()
 		return
 
 	if right90:
@@ -140,6 +179,11 @@ def decide(status):
 		publisher_velocity.publish(ninety_right)
 		time.sleep(1.2)
 		right90 = False
+		outfile=open("postition.txt","w")
+		count+=len(status.x,status.y)+len(",right90")+len("\n")
+		numchar.append(count)
+		outfile.write(status.x,status.y+",right90"+"\n")
+		outfile.close()
 		return
 
 	if goleft:
@@ -147,6 +191,11 @@ def decide(status):
 		publisher_velocity.publish(left_spin)
 		time.sleep(1)
 		goleft = False
+		outfile=open("postition.txt","w")
+		count+=len(status.x,status.y)+len(",goleft")+len("\n")
+		numchar.append(count)
+		outfile.write(status.x,status.y+",goleft"+"\n")
+		outfile.close()
 		return
 
 	if goright:
@@ -154,14 +203,29 @@ def decide(status):
 		publisher_velocity.publish(right_spin)
 		time.sleep(1)
 		goright = False
+		outfile=open("postition.txt","w")
+		count+=len(status.x,status.y)+len(",rightspin")+len("\n")
+		numchar.append(count)
+		outfile.write(status.x,status.y+",rightspin"+"\n")
+		outfile.close()
 		return
 
 	if goforward:
 		print("Mi allontano\n")
 		publisher_velocity.publish(forward)
+		outfile=open("postition.txt","w")
+		count+=len(status.x,status.y)+len(",forward")+len("\n")
+		numchar.append(count)
+		outfile.write(status.x,status.y+",forward"+"\n")
+		outfile.close()
 		return
 
 	publisher_velocity.publish(forward)
+	outfile=open("postition.txt","w")
+	count+=len(status.x,status.y)+len(",forward")+len("\n")
+	numchar.append(count)
+	outfile.write(status.x,status.y+",forward")
+	outfile.close()
 	turn_right = False
 	turn_left = False
 	goback = False
