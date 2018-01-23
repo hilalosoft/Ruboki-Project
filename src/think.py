@@ -97,7 +97,7 @@ def decide(status):
 		for obstacle in obstacles:
 			dist = distance(status.x, status.y, obstacle[0], obstacle[1])
 			if dist < 0.3:
-				print "Vecchio ostacolo"
+				print("Vecchio ostacolo")
 				last_obstacle = (obstacle[0], obstacle[1])
 				bumped = True
 				return
@@ -128,7 +128,7 @@ def decide(status):
 			turn = "right"
 		goforward = False
 	if turn_right:
-		print "Esco a destra"
+		print("Esco a destra")
 		publisher_velocity.publish(right_spin)
 		time.sleep(1.5)
 		turn_right = False
@@ -141,7 +141,7 @@ def decide(status):
 		outfile.close()
 
 	if turn_left:
-		print "Esco a sinistra"
+		print("Esco a sinistra")
 		publisher_velocity.publish(left_spin)
 		time.sleep(1.5)
 		turn_left = False
@@ -153,7 +153,7 @@ def decide(status):
 		outfile.close()
 
 	if goback:
-		print "Indietro\n"
+		print("Indietro\n")
 		publisher_velocity.publish(backward)
 		outfile=open("postition.txt","w")
 		count+=len(status.x,status.y)+len(",back")+len("\n")
@@ -163,7 +163,7 @@ def decide(status):
 		return
 	
 	if left90:
-		print "90 left"
+		print("90 left")
 		publisher_velocity.publish(ninety_left)
 		time.sleep(1.2)
 		left90 = False
@@ -175,7 +175,7 @@ def decide(status):
 		return
 
 	if right90:
-		print "90 right"
+		print("90 right")
 		publisher_velocity.publish(ninety_right)
 		time.sleep(1.2)
 		right90 = False
@@ -187,7 +187,7 @@ def decide(status):
 		return
 
 	if goleft:
-		print "left"
+		print("left")
 		publisher_velocity.publish(left_spin)
 		time.sleep(1)
 		goleft = False
@@ -199,7 +199,7 @@ def decide(status):
 		return
 
 	if goright:
-		print "right"
+		print("right")
 		publisher_velocity.publish(right_spin)
 		time.sleep(1)
 		goright = False
@@ -211,7 +211,7 @@ def decide(status):
 		return
 
 	if goforward:
-		print "Mi allontano\n"
+		print("Mi allontano\n")
 		publisher_velocity.publish(forward)
 		outfile=open("postition.txt","w")
 		count+=len(status.x,status.y)+len(",forward")+len("\n")
@@ -232,7 +232,7 @@ def decide(status):
 	goforward = False
 	bumped = False
 	turn = ""
-	print "Avanti"
+	print("Avanti")
 	
 
 
