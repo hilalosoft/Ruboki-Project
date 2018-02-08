@@ -201,7 +201,7 @@ def decide(status):
 		time.sleep(1)
 		goright = False
 		outfile=open("postition.txt","w")
-		count+=len(status.x)+len(status.y))+len(",rightspin")+len("\n")
+		count+=len(status.x)+len(status.y)+len(",rightspin")+len("\n")
 		numchar.append(count)
 		outfile.write(status.x,status.y+",rightspin"+"\n")
 		outfile.close()
