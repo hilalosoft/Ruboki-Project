@@ -134,7 +134,7 @@ def decide(status):
 		outfile=open("postition.txt","w")
 		count+=len(repr(status.x))+len(repr(status.y))+len(",rightspin")+len("\n")
 		numchar.append(count)
-		outfile.write(status.x,status.y+",rightspin"+"\n")
+		outfile.write(repr(status.x)+repr(status.y)+",rightspin"+"\n")
 		outfile.close()
 
 	if turn_left:
@@ -146,7 +146,7 @@ def decide(status):
 		outfile=open("postition.txt","w")
 		count+=len(repr(status.x))+len(repr(status.y))+len(",leftspin")+len("\n")
 		numchar.append(count)
-		outfile.write(status.x,status.y+",leftspin"+"\n")
+		outfile.write(repr(status.x)+repr(status.y)+",leftspin"+"\n")
 		outfile.close()
 
 	if goback:
@@ -155,7 +155,7 @@ def decide(status):
 		outfile=open("postition.txt","w")
 		count+=len(repr(status.x))+len(repr(status.y))+len(",back")+len("\n")
 		numchar.append(count)
-		outfile.write(status.x,status.y+",back"+"\n")
+		outfile.write(repr(status.x)+repr(status.y)+",back"+"\n")
 		outfile.close()
 		return
 	
@@ -167,7 +167,7 @@ def decide(status):
 		outfile=open("postition.txt","w")
 		count+=len(repr(status.x))+len(repr(status.y))+len(",left90")+len("\n")
 		numchar.append(count)
-		outfile.write(status.x,status.y+",left90"+"\n")
+		outfile.write(repr(status.x)+repr(status.y)+",left90"+"\n")
 		outfile.close()
 		return
 
@@ -179,7 +179,7 @@ def decide(status):
 		outfile=open("postition.txt","w")
 		count+=len(repr(status.x))+len(repr(status.y))+len(",right90")+len("\n")
 		numchar.append(count)
-		outfile.write(status.x,status.y+",right90"+"\n")
+		outfile.write(repr(status.x)+repr(status.y)+",right90"+"\n")
 		outfile.close()
 		return
 
@@ -191,7 +191,7 @@ def decide(status):
 		outfile=open("postition.txt","w")
 		count+=len(repr(status.x))+len(repr(status.y))+len(",goleft")+len("\n")
 		numchar.append(count)
-		outfile.write(status.x,status.y+",goleft"+"\n")
+		outfile.write(repr(status.x)+repr(status.y)+",goleft"+"\n")
 		outfile.close()
 		return
 
@@ -203,7 +203,7 @@ def decide(status):
 		outfile=open("postition.txt","w")
 		count+=len(repr(status.x))+len(repr(status.y))+len(",rightspin")+len("\n")
 		numchar.append(count)
-		outfile.write(status.x,status.y+",rightspin"+"\n")
+		outfile.write(repr(status.x)+repr(status.y)+",rightspin"+"\n")
 		outfile.close()
 		return
 
@@ -213,7 +213,7 @@ def decide(status):
 		outfile=open("postition.txt","w")
 		count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")
 		numchar.append(count)
-		outfile.write(status.x,status.y+",forward"+"\n")
+		outfile.write(repr(status.x)+repr(status.y)+",forward"+"\n")
 		outfile.close()
 		return
 
@@ -221,7 +221,7 @@ def decide(status):
 	outfile=open("postition.txt","w")
 	count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")
 	numchar.append(count)
-	outfile.write(status.x,status.y+",forward")
+	outfile.write(repr(status.x)+repr(status.y)+",forward")
 	outfile.close()
 	turn_right = False
 	turn_left = False
