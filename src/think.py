@@ -103,16 +103,12 @@ def decide(status):
 
 	#we write in the file all the information about the movement  the position and the desicion made
 	if status.left or status.front or status.right :
-		infile=open("position","r")
-
-
-
-		inputt=open("postition.txt","r")
+		inputt=open("position.txt","r")
 		inputt.seek(list[len(list)-2])
 		s=inputt.readline()
 		s.split(",")
 		print(s[1],s[2])
-		infile.close()
+		inputt.close()
 		last_obstacle = (status.x, status.y)
 		obstacles.append((status.x, status.y))
 		goback = True
@@ -131,7 +127,7 @@ def decide(status):
 		turn_right = False
 		goforward = True
 		movement,
-		outfile=open("postition.txt","w")
+		outfile=open("position.txt","w")
 		count+=len(repr(status.x))+len(repr(status.y))+len(",rightspin")+len("\n")
 		numchar.append(count)
 		outfile.write(repr(status.x)+repr(status.y)+",rightspin"+"\n")
