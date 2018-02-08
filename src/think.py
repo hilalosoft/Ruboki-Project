@@ -78,7 +78,7 @@ def decide(status):
 	global bumped
 	#dist = 0.0
 
-	if Base_Position == null:
+	if Base_Position == None:
 		Base_Position= status.x,status.y
 
 	if not last_obstacle == [] and distance(status.x, status.y, last_obstacle[0], last_obstacle[1]) < 0.3:
