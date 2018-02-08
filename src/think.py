@@ -37,7 +37,7 @@ last_obstacle = []
 turn_right = False
 turn_left = False
 bumped = False
-Base_Position = null
+Base_Position = None
  
 obstacles = []
 
