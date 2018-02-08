@@ -78,7 +78,7 @@ def decide(status):
 	global bumped
 	#dist = 0.0
 
-	if Base_Position == null
+	if Base_Position == null:
 		Base_Position= status.x,status.y
 
 	if not last_obstacle == [] and distance(status.x, status.y, last_obstacle[0], last_obstacle[1]) < 0.3:
@@ -114,7 +114,7 @@ def decide(status):
 		inputt.seek(list[len(list)-2])
 		s=inputt.readline()
 		s.split(",")
-
+		print(s[1],s[2])
 		infile.close()
 		last_obstacle = (status.x, status.y)
 		obstacles.append((status.x, status.y))
