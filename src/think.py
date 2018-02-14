@@ -225,7 +225,7 @@ def decide(status):
 
 	publisher_velocity.publish(forward)
 	outfile=open("position.txt","a")
-	if len(numchar!=0):
+	if len(numchar)!=0:
 		count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")+numchar[len(numchar)-1]
 	else:
 		count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")
