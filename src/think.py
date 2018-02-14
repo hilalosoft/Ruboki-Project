@@ -89,7 +89,7 @@ def decide(status):
 			else:
 				turn_right = True
 			goback = False
-	else:		
+	else:
 		goforward = False
 
 
@@ -141,8 +141,10 @@ def decide(status):
 		outfile.close()
 
 	if goback:
-		print("Indietro\n")
+		print("Indietro")
 		publisher_velocity.publish(backward)
+		goback=False
+		goforward=True
 		outfile=open("position.txt","a")
 		count+=len(repr(status.x))+len(repr(status.y))+len(",back")+len("\n")
 		numchar.append(count)
