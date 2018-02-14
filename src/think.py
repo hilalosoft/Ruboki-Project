@@ -78,8 +78,13 @@ def decide(status):
 	global turn_right
 	global turn_left
 	global bumped
-
+	global base
 	#dist = 0.0
+
+	if len(numchar)==0:
+		base=(status.x,status.y)
+		fileread =open("base.txt","w")
+		fileread.write(base)
 
 
 	if not last_obstacle == [] and distance(status.x, status.y, last_obstacle[0], last_obstacle[1]) < 0.3:
