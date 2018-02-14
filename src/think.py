@@ -78,6 +78,7 @@ def decide(status):
 	global turn_right
 	global turn_left
 	global bumped
+
 	#dist = 0.0
 
 
@@ -212,7 +213,7 @@ def decide(status):
 	outfile=open("position.txt","a")
 	count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")
 	numchar.append(count)
-	outfile.write(repr(status.x)+repr(status.y)+",forward")
+	outfile.write(repr(status.x)+repr(status.y)+",forward"+"\n")
 	outfile.close()
 	turn_right = False
 	turn_left = False
