@@ -80,7 +80,8 @@ def decide(status):
 	global bumped
 	global base
 	#dist = 0.0
-	print(status.)
+
+	
 	if len(numchar)==0:
 		base=(status.x,status.y)
 		fileread =open("base.txt","w")
