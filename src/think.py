@@ -128,6 +128,7 @@ def decide(status):
 		numchar.append(count)
 		outfile.write(repr(status.x)+repr(status.y)+",rightspin"+"\n")
 		outfile.close()
+		print(count)
 
 	if turn_left:
 		print("Esco a sinistra")
@@ -140,6 +141,7 @@ def decide(status):
 		numchar.append(count)
 		outfile.write(repr(status.x)+repr(status.y)+",leftspin"+"\n")
 		outfile.close()
+		print(count)
 
 	if goback:
 		print("Indietro")
@@ -149,6 +151,7 @@ def decide(status):
 		numchar.append(count)
 		outfile.write(repr(status.x)+repr(status.y)+",back"+"\n")
 		outfile.close()
+		print(count)
 		return
 	
 	if left90:
@@ -161,6 +164,7 @@ def decide(status):
 		numchar.append(count)
 		outfile.write(repr(status.x)+repr(status.y)+",left90"+"\n")
 		outfile.close()
+		print(count)
 		return
 
 	if right90:
@@ -185,6 +189,7 @@ def decide(status):
 		numchar.append(count)
 		outfile.write(repr(status.x)+repr(status.y)+",goleft"+"\n")
 		outfile.close()
+		print(count)
 		return
 
 	if goright:
@@ -197,6 +202,7 @@ def decide(status):
 		numchar.append(count)
 		outfile.write(repr(status.x)+repr(status.y)+",rightspin"+"\n")
 		outfile.close()
+		print(count)
 		return
 
 	if goforward:
@@ -207,6 +213,7 @@ def decide(status):
 		numchar.append(count)
 		outfile.write(repr(status.x)+repr(status.y)+",forward"+"\n")
 		outfile.close()
+		print(count)
 		return
 
 	publisher_velocity.publish(forward)
@@ -215,6 +222,7 @@ def decide(status):
 	numchar.append(count)
 	outfile.write(repr(status.x)+repr(status.y)+",forward"+"\n")
 	outfile.close()
+	print(count)
 	turn_right = False
 	turn_left = False
 	goback = False
