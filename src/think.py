@@ -143,7 +143,6 @@ def decide(status):
 	if goback:
 		print("Indietro")
 		publisher_velocity.publish(backward)
-		goback=False
 		outfile=open("position.txt","a")
 		count+=len(repr(status.x))+len(repr(status.y))+len(",back")+len("\n")
 		numchar.append(count)
