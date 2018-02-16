@@ -19,7 +19,6 @@ right_spin = Twist(Vector3(0,0,0),Vector3(0,0,-1.5))
 left_spin = Twist(Vector3(0,0,0),Vector3(0,0,1.5))
 
 command_history = []
-returnstep=0
 numchar=[]
 
 ninety_left = Twist(Vector3(0,0,0),Vector3(0,0,3.14))
@@ -79,8 +78,10 @@ def decide(status):
 	global turn_left
 	global bumped
 	global base
+	global returnstep
 	#dist = 0.0
-
+	if not returnstep == None
+		returnstep = 1
 	#trun on the return to base function
 	if not numchar==[] and numchar[len(numchar)-1]>2000 and returnstep<len(command_history):
 		readfile=open("position.txt","r")
