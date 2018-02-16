@@ -37,9 +37,7 @@ last_obstacle = []
 turn_right = False
 turn_left = False
 bumped = False
-out=open("position.txt","w")
-out.write(" ")
-out.close()
+return_to_base=False
 
 obstacles = []
 
@@ -81,11 +79,24 @@ def decide(status):
 	global base
 	#dist = 0.0
 
+	#trun on the return to base function
+	if count>5000:
+		return_to_base=True
+ 	if return_to_base==True:
+		readfile=open("position","r")
+		readfile.seek()
+
+
+
+
 
 	if len(numchar)==0:
 		base=(status.x,status.y)
 		fileread =open("base.txt","w")
-		fileread.write(str(base))
+		fileread.seek(numchar[len(numchar)-1])
+		s=fileread.readline()
+		print(s)
+
 
 
 	if not last_obstacle == [] and distance(status.x, status.y, last_obstacle[0], last_obstacle[1]) < 0.3:
