@@ -7,6 +7,8 @@ from kobuki_project.msg import Status
 from geometry_msgs.msg import Twist
 from geometry_msgs.msg import Vector3
 import atexit
+import act
+import sense
 
 
 
@@ -254,5 +256,8 @@ def think():
 if __name__ == '__main__':
 	try:
 		think()
+		act.act()
+		sense.sense()
+
 	except rospy.ROSInterruptException:
 		pass

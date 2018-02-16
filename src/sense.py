@@ -7,7 +7,8 @@ import math
 from nav_msgs.msg import Odometry
 from kobuki_msgs.msg import BumperEvent
 from kobuki_project.msg import Status
-
+import act
+import think
 publisher_status = rospy.Publisher('kobuki_status', Status, queue_size=1)
 status = Status()
 
@@ -50,5 +51,7 @@ def sense():
 if __name__ == '__main__':
 	try:
 		sense()
+		think.think()
+		act.act()
 	except rospy.ROSInterruptException:
 		pass
