@@ -7,8 +7,6 @@ from kobuki_project.msg import Status
 from geometry_msgs.msg import Twist
 from geometry_msgs.msg import Vector3
 import atexit
-import act
-import sense
 
 
 
@@ -90,8 +88,8 @@ def decide(status):
 		s=readfile.readline()
 		print(s)
 		print(numchar)
-		print(command_history[len(command_history)-returnstep++])
-
+		print(command_history[len(command_history)-returnstep])
+		returnstep=returnstep+1
 
 
 	if not last_obstacle == [] and distance(status.x, status.y, last_obstacle[0], last_obstacle[1]) < 0.3:
