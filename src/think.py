@@ -82,7 +82,6 @@ def decide(status):
 	#trun on the return to base function
 	if not numchar==[] and numchar[len(numchar)-1]>2000:
 		readfile=open("position.txt","r")
-		readfile.seek()
 		readfile.seek(numchar[len(numchar)-1])
 		s=readfile.readline()
 		print(s)
