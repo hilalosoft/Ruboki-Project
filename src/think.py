@@ -85,7 +85,7 @@ def decide(status):
 	if not numchar==[] and numchar[len(numchar)-1]>2000 and returnstep<len(command_history):
 		readfile=open("position.txt","r")
 		readfile.seek(numchar[len(numchar)-1])
-		s=readfile.readline()g
+		s=readfile.readline()
 		print(s)
 		print(numchar)
 		print(command_history[len(command_history)-returnstep])
