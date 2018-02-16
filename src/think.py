@@ -20,6 +20,8 @@ backward_obst = Twist(Vector3(-0.1,0,0),Vector3(0,0,0))
 right_spin = Twist(Vector3(0,0,0),Vector3(0,0,-1.5))
 left_spin = Twist(Vector3(0,0,0),Vector3(0,0,1.5))
 
+command_history = []
+returnstep=0
 numchar=[]
 
 ninety_left = Twist(Vector3(0,0,0),Vector3(0,0,3.14))
@@ -82,12 +84,13 @@ def decide(status):
 	#dist = 0.0
 
 	#trun on the return to base function
-	if not numchar==[] and numchar[len(numchar)-1]>2000:
+	if not numchar==[] and numchar[len(numchar)-1]>2000 and returnstep<len(command_history):
 		readfile=open("position.txt","r")
 		readfile.seek(numchar[len(numchar)-1])
 		s=readfile.readline()
 		print(s)
 		print(numchar)
+		print(command_history[len(command_history)-returnstep++])
 
 
 
@@ -155,6 +158,7 @@ def decide(status):
 	if goback:
 		print("Indietro")
 		publisher_velocity.publish(backward)
+		command_history.append("backward")
 		outfile=open("position.txt","a")
 		count+=len(repr(status.x))+len(repr(status.y))+len(",back")+len("\n")+numchar[len(numchar)-1]
 		numchar.append(count)
@@ -218,6 +222,7 @@ def decide(status):
 	if goforward:
 		print("Mi allontano\n")
 		publisher_velocity.publish(forward)
+		command_history.append(forward)
 		outfile=open("position.txt","a")
 		count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")+numchar[len(numchar)-1]
 		numchar.append(count)
@@ -256,8 +261,6 @@ def think():
 if __name__ == '__main__':
 	try:
 		think()
-		act.act()
-		sense.sense()
 
 	except rospy.ROSInterruptException:
 		pass
