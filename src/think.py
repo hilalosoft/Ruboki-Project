@@ -80,7 +80,7 @@ def decide(status):
 	global base
 	global returnstep
 	#dist = 0.0
-	if not returnstep == None
+	if not returnstep == None:
 		returnstep = 1
 	#trun on the return to base function
 	if not numchar==[] and numchar[len(numchar)-1]>2000 and returnstep<len(command_history):
