@@ -51,7 +51,5 @@ def sense():
 if __name__ == '__main__':
 	try:
 		sense()
-		os.system('python act.py')
-		os.system('python think.py')
 	except rospy.ROSInterruptException:
 		pass
