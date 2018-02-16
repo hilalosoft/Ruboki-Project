@@ -246,6 +246,7 @@ def decide(status):
 	bumped = False
 	turn = ""
 	print("Avanti")
+	command_history.append("forward")
 	
 
 
