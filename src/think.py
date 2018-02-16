@@ -37,7 +37,6 @@ last_obstacle = []
 turn_right = False
 turn_left = False
 bumped = False
-return_to_base=False
 
 obstacles = []
 
@@ -56,7 +55,8 @@ def distance(x1, y1, x2, y2):
 	return math.sqrt(xd * xd + yd * yd)
 
 def decide(status):
-	
+
+	return_to_base=False
 	#print status.x
 	#print status.y
 	#print status.left
@@ -85,16 +85,8 @@ def decide(status):
  	if return_to_base==True:
 		readfile=open("position","r")
 		readfile.seek()
-
-
-
-
-
-	if len(numchar)==0:
-		base=(status.x,status.y)
-		fileread =open("base.txt","w")
-		fileread.seek(numchar[len(numchar)-1])
-		s=fileread.readline()
+		readfile.seek(numchar[len(numchar)-1])
+		s=readfile.readline()
 		print(s)
 
 
