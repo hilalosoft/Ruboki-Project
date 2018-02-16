@@ -81,8 +81,6 @@ def decide(status):
 
 	#trun on the return to base function
 	if count>5000:
-		return_to_base=True
- 	if return_to_base==True:
 		readfile=open("position","r")
 		readfile.seek()
 		readfile.seek(numchar[len(numchar)-1])
