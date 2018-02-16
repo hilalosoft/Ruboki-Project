@@ -79,14 +79,13 @@ def decide(status):
 	global bumped
 	global base
 	global returnstep
+	returnstep = 1
 	#dist = 0.0
-	if not returnstep == None:
-		returnstep = 1
 	#trun on the return to base function
 	if not numchar==[] and numchar[len(numchar)-1]>2000 and returnstep<len(command_history):
 		readfile=open("position.txt","r")
 		readfile.seek(numchar[len(numchar)-1])
-		s=readfile.readline()
+		s=readfile.readline()g
 		print(s)
 		print(numchar)
 		print(command_history[len(command_history)-returnstep])
