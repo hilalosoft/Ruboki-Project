@@ -85,6 +85,7 @@ def decide(status):
 		readfile.seek(numchar[len(numchar)-1])
 		s=readfile.readline()
 		print(s)
+		print(numchar)
 
 
 
@@ -153,7 +154,7 @@ def decide(status):
 		print("Indietro")
 		publisher_velocity.publish(backward)
 		outfile=open("position.txt","a")
-		count+=len(repr(status.x))+len(repr(status.y))+len(",back")+len("\n")
+		count+=len(repr(status.x))+len(repr(status.y))+len(",back")+len("\n")+numchar[len(numchar)-1]
 		numchar.append(count)
 		outfile.write(repr(status.x)+repr(status.y)+",back"+"\n")
 		outfile.close()
@@ -166,7 +167,7 @@ def decide(status):
 		time.sleep(1.2)
 		left90 = False
 		outfile=open("position.txt","a")
-		count+=len(repr(status.x))+len(repr(status.y))+len(",left90")+len("\n")
+		count+=len(repr(status.x))+len(repr(status.y))+len(",left90")+len("\n")+numchar[len(numchar)-1]
 		numchar.append(count)
 		outfile.write(repr(status.x)+repr(status.y)+",left90"+"\n")
 		outfile.close()
@@ -216,7 +217,7 @@ def decide(status):
 		print("Mi allontano\n")
 		publisher_velocity.publish(forward)
 		outfile=open("position.txt","a")
-		count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")
+		count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")+numchar[len(numchar)-1]
 		numchar.append(count)
 		outfile.write(repr(status.x)+repr(status.y)+",forward"+"\n")
 		outfile.close()
@@ -226,7 +227,7 @@ def decide(status):
 	publisher_velocity.publish(forward)
 	outfile=open("position.txt","a")
 	if len(numchar)!=0:
-		count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")
+		count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")+numchar[len(numchar)-1]
 	else:
 		count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")
 	numchar.append(count)
