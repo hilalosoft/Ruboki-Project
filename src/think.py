@@ -95,8 +95,10 @@ def decide(status):
 		if dist > 0.2 and not turned and not goforward:
 			if turn == "left":
 				goleft = True
+				last_obstale = []
 			else:
 				goright = True
+				last_obstacle = []
 			goback = False
 	else:		
 		goforward = False
