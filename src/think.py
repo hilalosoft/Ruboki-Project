@@ -33,6 +33,9 @@ turn_right = False
 turn_left = False
 bumped = False
 
+arrived_base=False
+return_base=False
+inv_command_history = []
 
 obstacles = []
 
@@ -69,6 +72,10 @@ def decide(status):
 	global turn_right
 	global turn_left
 	global bumped
+	
+	global arrived_base
+	global return_base
+	global inv_command_history
 	#dist = 0.0
 
 	if not last_obstacle == [] and distance(status.x, status.y, last_obstacle[0], last_obstacle[1]) < 0.3:
@@ -183,4 +190,4 @@ if __name__ == '__main__':
 	try:
 		think()
 	except rospy.ROSInterruptException:
-pass
+		pass
