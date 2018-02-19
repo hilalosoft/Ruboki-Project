@@ -275,11 +275,11 @@ def decide(status):
 		print("Mi allontano")
 		publisher_velocity.publish(forward)
 		inv_command_history.append("goback")
-		outfile=open("position.txt","a")
-		count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")+numchar[len(numchar)-1]
-		numchar.append(count)
-		outfile.write(repr(status.x)+repr(status.y)+",forward"+"\n")
-		outfile.close()
+		#outfile=open("position.txt","a")
+		#count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")+numchar[len(numchar)-1]
+		#numchar.append(count)
+		#outfile.write(repr(status.x)+repr(status.y)+",forward"+"\n")
+		#outfile.close()
 		print(count)
 		return
 
