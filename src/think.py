@@ -85,7 +85,7 @@ def decide(status):
 	#dist = 0.0
 	#trun on the return to base function
 	if len(inv_command_history)>returnstep and returnstep>=0 or return_base:
-		if returnstep>=0:
+		if returnstep>20:
 			return_base=True
 		#readfile=open("position.txt","r")
 		#readfile.seek(numchar[len(numchar)-1])
@@ -114,7 +114,7 @@ def decide(status):
 
 		returnstep=returnstep-1
 
-	elif len(inv_command_history)>returnstep or returnstep < 0:
+	elif len(inv_command_history)>returnstep or returnstep < 0 or arrived_base:
 		if(not arrived_base):
 			print("returned to base!")
 			return_base=False
