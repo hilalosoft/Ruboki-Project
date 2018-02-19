@@ -82,9 +82,6 @@ def decide(status):
 	global returnstep
 	#dist = 0.0
 
-	if startup:
-		time.sleep(20)
-		startup = False
 	if not inv_command_history == [] and (len(inv_command_history)>returnstep and returnstep>=0) or return_base:
 		if returnstep>0:
 			return_base=True
