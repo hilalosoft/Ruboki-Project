@@ -152,16 +152,16 @@ def decide(status):
 
 	#we write in the file all the information about the movement  the position and the desicion made
 		if not turn == "":
-		    if turn == "left":
-			goback = False
-			goforward = False
-			left90 = True
-			turn = ""
-		    elif turn == "right":
-			goback = False
-			goforward = False
-			right90 = True
-			turn = ""
+			if turn == "left":
+				goback = False
+				goforward = False
+				left90 = True
+				turn = ""
+			elif turn == "right":
+				goback = False
+				goforward = False
+				right90 = True
+				turn = ""
 			
 	if (status.left or status.front or status.right or bumped) and not return_base :
 		goback = True
