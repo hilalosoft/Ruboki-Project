@@ -140,6 +140,7 @@ def decide(status):
 			right90=True
 		elif(current == "left90"):
 			left90 == True
+			print("leftcheck")
 		elif(current == "turn_left"):
 			turn_left = True
 		elif(current == "turn_right"):
