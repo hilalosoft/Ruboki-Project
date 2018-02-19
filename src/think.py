@@ -95,6 +95,7 @@ def decide(status):
 		if dist > 0.2 and not turned and not goforward:
 			if turn == "left":
 				goleft = True
+				turned = True
 			else:
 				goright = True
 			goback = False
@@ -102,7 +103,7 @@ def decide(status):
 		goforward = False
 
 
-	if not bumped and not return_base and not arrived_base:
+	if not bumped and not return_base and not arrived_base and not turned:
 
 		for obstacle in obstacles:
 			dist = distance(status.x, status.y, obstacle[0], obstacle[1])
