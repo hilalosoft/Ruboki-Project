@@ -38,6 +38,7 @@ last_obstacle = []
 turn_right = False
 turn_left = False
 bumped = False
+arrived_base=False
 
 obstacles = []
 
@@ -110,7 +111,9 @@ def decide(status):
 		returnstep=returnstep-1
 
 	elif len(inv_command_history)>returnstep or returnstep < 0:
-		print("returned to base!")
+		if(not arrived_base):
+			print("returned to base!")
+			arrived_base=True
 		return
 
 
@@ -149,6 +152,7 @@ def decide(status):
 		else:
 			turn = "back"
 		goforward = False
+		bumped = False
 	if not turn == "":
 		if turn == "left":
 			goback = False
