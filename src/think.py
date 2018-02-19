@@ -152,6 +152,25 @@ def decide(status):
 
 
 	#we write in the file all the information about the movement  the position and the desicion made
+		
+	if status.left or status.front or status.right:
+		publisher_velocity.publish(stop)
+		print("Ostacolo aggiunto")
+		if status.left:
+			turn = "right"
+		elif status.right:
+			turn = "left"
+		else:
+			turn = "left"
+		time.sleep(0.2)
+		publisher_velocity.publish(backward)
+		print("backing up")
+		time.sleep(0.5)
+		inv_command_history = inv_command_history.slice(0,len(inv_command_history)-2)
+		goback = False
+		goforward = False
+		bumped = False
+
 		if not turn == "":
 			if turn == "left":
 				goback = False
@@ -164,23 +183,6 @@ def decide(status):
 				right90 = True
 				turn = ""
 			
-	if (status.left or status.front or status.right or bumped) and not return_base :
-		publisher_velocity.publish(stop)
-		print("Ostacolo aggiunto")
-		if status.left:
-			turn = "right"
-		elif status.right:
-			turn = "left"
-		else:
-			turn = "left"
-		time.sleep(0.2)
-		publisher_velocity.publish(backward)
-		time.sleep(0.5)
-		inv_command_history = inv_command_history.slice(0,len(inv_command_history)-2)
-		goforward = False
-		bumped = False
-
-		
 	if turn_right:
 		print("Esco a destra")
 		publisher_velocity.publish(right_spin)
@@ -213,7 +215,7 @@ def decide(status):
 		print("Indietro")
 		publisher_velocity.publish(backward)
 		inv_command_history.append("goforward")
-		time.sleep(0.5)
+		time.sleep(0.1)
 		#outfile=open("position.txt","a")
 		#count+=len(repr(status.x))+len(repr(status.y))+len(",back")+len("\n")+numchar[len(numchar)-1]
 		goback = False
@@ -283,7 +285,7 @@ def decide(status):
 		print("Mi allontano")
 		publisher_velocity.publish(forward)
 		inv_command_history.append("goback")
-		time.sleep(0.5)
+		time.sleep(0.1)
 		#outfile=open("position.txt","a")
 		#count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")+numchar[len(numchar)-1]
 		#numchar.append(count)
