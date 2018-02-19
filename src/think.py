@@ -153,15 +153,12 @@ def decide(status):
 			right90=True
 		elif(current == "left90"):
 			left90 == True
-			print("leftcheck")
+			
 		elif(current == "turn_left"):
 			turn_left = True
 		elif(current == "turn_right"):
 			turn_right = True
 		
-
-
-
 
 		returnstep=returnstep-1
 		if returnstep<0:
@@ -190,7 +187,7 @@ def decide(status):
 		inv_command_history.append("turn_right")
 		turn_left = False
 		goforward = True
-	
+	print(left90)
 	if left90:
 		print "90 left"
 		publisher_velocity.publish(ninety_left)
