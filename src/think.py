@@ -132,7 +132,7 @@ def decide(status):
 
 	elif len(inv_command_history)>returnstep or returnstep < 0 or arrived_base:
 		if(not arrived_base):
-			print("returned to base!" + str(distancce(startpos[0], startpos[1], status.x, status.y))
+			print("returned to base!" + str(distancce(startpos[0], startpos[1], status.x, status.y)))
 			return_base=False
 			arrived_base=True
 		return
