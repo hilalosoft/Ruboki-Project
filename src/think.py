@@ -120,6 +120,7 @@ def decide(status):
 		print "Esco a destra"
 		publisher_velocity.publish(right_spin)
 		time.sleep(1.5)
+		inv_command_history.append("turn_left")
 		turn_right = False
 		goforward = True
 
@@ -127,12 +128,14 @@ def decide(status):
 		print "Esco a sinistra"
 		publisher_velocity.publish(left_spin)
 		time.sleep(1.5)
+		inv_command_history.append("turn_right")
 		turn_left = False
 		goforward = True
 
 	if goback:
 		print "Indietro\n"
 		publisher_velocity.publish(backward)
+		inv_command_history.append("goforward")
 		return
 	
 	if left90:
@@ -140,6 +143,7 @@ def decide(status):
 		publisher_velocity.publish(ninety_left)
 		time.sleep(1.2)
 		left90 = False
+		inv_command_history.append("right90")
 		return
 
 	if right90:
@@ -147,6 +151,7 @@ def decide(status):
 		publisher_velocity.publish(ninety_right)
 		time.sleep(1.2)
 		right90 = False
+		inv_command_history.append("left90")
 		return
 
 	if goleft:
@@ -154,6 +159,7 @@ def decide(status):
 		publisher_velocity.publish(left_spin)
 		time.sleep(1)
 		goleft = False
+		inv_command_history.append("goright")
 		return
 
 	if goright:
@@ -161,11 +167,13 @@ def decide(status):
 		publisher_velocity.publish(right_spin)
 		time.sleep(1)
 		goright = False
+		inv_command_history.append("goleft")
 		return
 
 	if goforward:
 		print "Mi allontano\n"
 		publisher_velocity.publish(forward)
+		inv_command_history.append("goback")
 		return
 
 	publisher_velocity.publish(forward)
