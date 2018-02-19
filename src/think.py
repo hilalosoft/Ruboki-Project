@@ -166,8 +166,8 @@ def decide(status):
 	if (status.left or status.front or status.right or bumped) and not return_base :
 		goback = True
 		publisher_velocity.publish(stop)
-		time.sleep(20)
 		print("Ostacolo aggiunto")
+		time.sleep(2)
 		if status.left:
 			turn = "right"
 		elif status.right:
