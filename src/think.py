@@ -226,7 +226,7 @@ def decide(status):
 		else:
 			goforward = True
 		inv_command_history.append("goright")
-		return
+		
 
 	if goright:
 		print "right"
@@ -238,7 +238,7 @@ def decide(status):
 		else:
 			goforward = True
 		inv_command_history.append("goleft")
-		return
+		
 	
 	if goback:
 		print "Indietro\n"
@@ -255,7 +255,7 @@ def decide(status):
 		return
 
 	publisher_velocity.publish(forward)
-	time.sleep(0.5)
+	time.sleep(0.1)
 	inv_command_history.append("goback")
 	turn_right = False
 	turn_left = False
