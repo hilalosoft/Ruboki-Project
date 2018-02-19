@@ -281,11 +281,10 @@ def decide(status):
 		outfile.write(repr(status.x)+repr(status.y)+",forward"+"\n")
 		outfile.close()
 		print(count)
-		goforward = False
 		return
 
-	publisher_velocity.publish(forward)
-	inv_command_history.append("goback")
+	#publisher_velocity.publish(forward)
+	#inv_command_history.append("goback")
 	outfile=open("position.txt","a")
 	if len(numchar)!=0:
 		count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")+numchar[len(numchar)-1]
