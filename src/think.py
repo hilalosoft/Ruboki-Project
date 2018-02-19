@@ -100,7 +100,7 @@ def decide(status):
 		goforward = False
 
 
-	if not bumped and not return_base:
+	if not bumped and not return_base and not arrived_base:
 
 		for obstacle in obstacles:
 			dist = distance(status.x, status.y, obstacle[0], obstacle[1])
