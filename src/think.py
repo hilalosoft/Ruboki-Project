@@ -141,7 +141,7 @@ def decide(status):
 		goforward = False
 
 
-	if not bumped:
+	if not bumped and not return_base:
 
 		for obstacle in obstacles:
 			dist = distance(status.x, status.y, obstacle[0], obstacle[1])
@@ -154,7 +154,7 @@ def decide(status):
 		
 	
 
-	if status.left or status.front or status.right :
+	if not return_base and (status.left or status.front or status.right) :
 		last_obstacle = (status.x, status.y)
 		obstacles.append((status.x, status.y))
 		goback = True
