@@ -20,6 +20,7 @@ left_spin = Twist(Vector3(0,0,0),Vector3(0,0,1.5))
 
 ninety_left = Twist(Vector3(0,0,0),Vector3(0,0,3.14))
 ninety_right = Twist(Vector3(0,0,0),Vector3(0,0,-3.14))
+stop = Twist(Vector3(0,0,0),Vector3(0,0,0))
 
 goback = False
 goleft = False
@@ -91,9 +92,9 @@ def decide(status):
 		dist = distance(status.x, status.y, last_obstacle[0], last_obstacle[1])
 		if dist > 0.2 and not goforward:
 			if turn == "left":
-				left90 = True
+				goleft = True
 			else:
-				right90 = True
+				goright = True
 			goback = False
 	else:		
 		goforward = False
@@ -153,12 +154,15 @@ def decide(status):
 			right90=True
 		elif(current == "left90"):
 			left90 == True
-			
+			print("leftcheck")
 		elif(current == "turn_left"):
 			turn_left = True
 		elif(current == "turn_right"):
 			turn_right = True
 		
+
+
+
 
 		returnstep=returnstep-1
 		if returnstep<0:
@@ -187,7 +191,7 @@ def decide(status):
 		inv_command_history.append("turn_right")
 		turn_left = False
 		goforward = True
-	print(left90)
+	
 	if left90:
 		print "90 left"
 		publisher_velocity.publish(ninety_left)
@@ -212,18 +216,15 @@ def decide(status):
 		inv_command_history.append("left90")
 		return
 
-	
-	if goback:
-		print "Indietro\n"
-		publisher_velocity.publish(backward)
-		inv_command_history.append("goforward")
-		return
-	
 	if goleft:
 		print "left"
 		publisher_velocity.publish(left_spin)
 		time.sleep(1.5)
 		goleft = False
+		if(return_base):
+			goback = True
+		else:
+			goforward = True
 		inv_command_history.append("goright")
 		return
 
@@ -232,9 +233,19 @@ def decide(status):
 		publisher_velocity.publish(right_spin)
 		time.sleep(1.5)
 		goright = False
+		if(return_base):
+			goback = True
+		else:
+			goforward = True
 		inv_command_history.append("goleft")
 		return
-
+	
+	if goback:
+		print "Indietro\n"
+		publisher_velocity.publish(backward)
+		inv_command_history.append("goforward")
+		return
+	
 	if goforward:
 		print "Mi allontano\n"
 		publisher_velocity.publish(forward)
