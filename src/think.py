@@ -84,7 +84,7 @@ def decide(status):
 	global returnstep
 	global arrived_base
 	global return_base
-	global invert_command_history
+	global inv_command_history
 	#dist = 0.0
 	#return to base function
 	if not inv_command_history == [] and (len(inv_command_history)>returnstep and returnstep>=0 or return_base):
