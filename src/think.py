@@ -281,6 +281,7 @@ def decide(status):
 		outfile.write(repr(status.x)+repr(status.y)+",forward"+"\n")
 		outfile.close()
 		print(count)
+		goforward = False
 		return
 
 	publisher_velocity.publish(forward)
