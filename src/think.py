@@ -109,7 +109,20 @@ def decide(status):
 				bumped = True
 				return
 
-		
+	
+	if not return_base and (status.left or status.front or status.right) :
+		last_obstacle = (status.x, status.y)
+		obstacles.append((status.x, status.y))
+		goback = True
+		#print("Ostacolo aggiunto")
+		if status.left:
+			turn = "right"
+		elif status.right:
+			turn = "left"
+		else:
+			turn = "right"
+		goforward = False
+	
 
 	
 	if not inv_command_history == [] and (len(inv_command_history)>returnstep and returnstep>=0) or return_base:
@@ -161,21 +174,6 @@ def decide(status):
 			arrived_base=True
 		return
 	
-		
-
-	if not return_base and (status.left or status.front or status.right) :
-		last_obstacle = (status.x, status.y)
-		obstacles.append((status.x, status.y))
-		goback = True
-		#print("Ostacolo aggiunto")
-		if status.left:
-			turn = "right"
-		elif status.right:
-			turn = "left"
-		else:
-			turn = "right"
-		goforward = False
-
 	if turn_right:
 		print "Esco a destra"
 		publisher_velocity.publish(right_spin)
