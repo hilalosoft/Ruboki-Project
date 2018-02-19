@@ -39,8 +39,6 @@ return_base=False
 inv_command_history = []
 returnstep = 120
 startpos = [0.0,0.0]
-
-
 obstacles = []
 
 def exit_handler():
@@ -88,6 +86,7 @@ def decide(status):
 	
 	if(startup):
 		startpos = [status.x, status.y]
+		startup = False
 
 	if not inv_command_history == [] and (len(inv_command_history)>returnstep and returnstep>=0) or return_base:
 		if returnstep>0:
