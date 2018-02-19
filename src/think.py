@@ -26,7 +26,7 @@ ninety_left = Twist(Vector3(0,0,0),Vector3(0,0,3.14))
 ninety_right = Twist(Vector3(0,0,0),Vector3(0,0,-3.14))
 
 movement = []
-returnstep = 200
+returnstep = 50
 
 goback = False
 goleft = False
