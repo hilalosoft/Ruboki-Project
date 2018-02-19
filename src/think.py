@@ -85,7 +85,8 @@ def decide(status):
 	#dist = 0.0
 	#trun on the return to base function
 	if len(inv_command_history)>returnstep and returnstep>=0 or return_base:
-		return_base=True
+		if returnstep>=0:
+			return_base=True
 		#readfile=open("position.txt","r")
 		#readfile.seek(numchar[len(numchar)-1])
 		#s=readfile.readline()
