@@ -41,6 +41,7 @@ inv_command_history = []
 returnstep = 120
 startpos = [0.0,0.0]
 obstacles = []
+turned = False
 
 def exit_handler():
 	out_file = open("map.txt","w")
@@ -77,6 +78,7 @@ def decide(status):
 	global bumped
 	global startup
 	
+	global turned
 	global arrived_base
 	global return_base
 	global inv_command_history
@@ -90,7 +92,7 @@ def decide(status):
 
 	if not return_base and not last_obstacle == [] and distance(status.x, status.y, last_obstacle[0], last_obstacle[1]) < 0.3:
 		dist = distance(status.x, status.y, last_obstacle[0], last_obstacle[1])
-		if dist > 0.2 and not goforward:
+		if dist > 0.2 and not turned and not goforward:
 			if turn == "left":
 				goleft = True
 			else:
@@ -115,7 +117,7 @@ def decide(status):
 		last_obstacle = (status.x, status.y)
 		obstacles.append((status.x, status.y))
 		goback = True
-		#print("Ostacolo aggiunto")
+		print("Ostacolo aggiunto")
 		if status.left:
 			turn = "right"
 		elif status.right:
@@ -220,6 +222,7 @@ def decide(status):
 		print "left"
 		publisher_velocity.publish(left_spin)
 		time.sleep(1.5)
+		turned = True
 		goleft = False
 		inv_command_history.append("goright")
 		return
@@ -228,6 +231,7 @@ def decide(status):
 		print "right"
 		publisher_velocity.publish(right_spin)
 		time.sleep(1.5)
+		turned = True
 		goright = False
 		inv_command_history.append("goleft")
 		return
@@ -235,17 +239,20 @@ def decide(status):
 	if goback:
 		print "Indietro\n"
 		publisher_velocity.publish(backward)
+		turned = False
 		inv_command_history.append("goforward")
 		return
 	
 	if goforward:
 		print "Mi allontano\n"
 		publisher_velocity.publish(forward)
+		turned = False
 		inv_command_history.append("goback")
 		return
 
 	publisher_velocity.publish(forward)
 	inv_command_history.append("goback")
+	turned = False
 	turn_right = False
 	turn_left = False
 	goback = False
