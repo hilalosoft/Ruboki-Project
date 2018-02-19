@@ -125,25 +125,25 @@ def decide(status):
 		return
 
 
-	if not last_obstacle == [] and distance(status.x, status.y, last_obstacle[0], last_obstacle[1]) < 0.3:
-		dist = distance(status.x, status.y, last_obstacle[0], last_obstacle[1])
-		if dist > 0.2 and not goforward:
-			if turn == "left":
-				turn_left = True
-			else:
-				turn_right = True
-			goback = False
-	else:
-		goforward = False
+	#if not last_obstacle == [] and distance(status.x, status.y, last_obstacle[0], last_obstacle[1]) < 0.3:
+	#	dist = distance(status.x, status.y, last_obstacle[0], last_obstacle[1])
+	#	if dist > 0.2 and not goforward:
+	#		if turn == "left":
+	#			turn_left = True
+	#		else:
+	#			turn_right = True
+	#		goback = False
+	#else:
+	#	goforward = False
 
 
-	if not bumped:
-		for obstacle in obstacles:
-			dist = distance(status.x, status.y, obstacle[0], obstacle[1])
-			if dist < 0.3:
-				print("Vecchio ostacolo")
-				last_obstacle = (obstacle[0], obstacle[1])
-				bumped = True
+	#if not bumped:
+	#	for obstacle in obstacles:
+	#		dist = distance(status.x, status.y, obstacle[0], obstacle[1])
+	#		if dist < 0.3:
+	#			print("Vecchio ostacolo")
+	#			last_obstacle = (obstacle[0], obstacle[1])
+	#			bumped = True
 				
 	
 
