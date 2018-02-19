@@ -85,8 +85,8 @@ def decide(status):
 		#readfile=open("position.txt","r")
 		#readfile.seek(numchar[len(numchar)-1])
 		#s=readfile.readline()
-		print(inv_command_history[returnstep])
-		current = publisher_velocity.publish(inv_command_history[returnstep])
+		print(inv_command_history[returnstep] + "    " + str(returnstep))
+		current = inv_command_history[returnstep]
 		if(current == "goforward"):
 			goforward = True
 		elif(current == "goback"):
@@ -149,7 +149,7 @@ def decide(status):
 			goforward = False
 			right90 = True
 			turn = ""
-	if (status.left or status.front or status.right) and bumped :
+	if (status.left or status.front or status.right) :
 		goback = True
 		print("Ostacolo aggiunto")
 		if status.left:
@@ -265,11 +265,12 @@ def decide(status):
 		numchar.append(count)
 		outfile.write(repr(status.x)+repr(status.y)+",forward"+"\n")
 		outfile.close()
+		goforward = False
 		print(count)
 		return
 
 	publisher_velocity.publish(forward)
-	inv_command_history.append(backward)
+	inv_command_history.append("goback")
 	outfile=open("position.txt","a")
 	if len(numchar)!=0:
 		count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")+numchar[len(numchar)-1]
