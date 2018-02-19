@@ -221,24 +221,16 @@ def decide(status):
 		publisher_velocity.publish(left_spin)
 		time.sleep(1.5)
 		goleft = False
-		if(return_base):
-			goback = True
-		else:
-			goforward = True
 		inv_command_history.append("goright")
-		
+		return
 
 	if goright:
 		print "right"
 		publisher_velocity.publish(right_spin)
 		time.sleep(1.5)
 		goright = False
-		if(return_base):
-			goback = True
-		else:
-			goforward = True
 		inv_command_history.append("goleft")
-		
+		return
 	
 	if goback:
 		print "Indietro\n"
