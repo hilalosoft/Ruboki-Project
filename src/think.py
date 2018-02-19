@@ -89,6 +89,14 @@ def decide(status):
 		#s=readfile.readline()
 		print(inv_command_history[returnstep] + "    " + str(returnstep))
 		current = inv_command_history[returnstep]
+		goforward = False
+		goback = False
+		goleft = False
+		goright = False
+		right90 = False
+		left90 = False
+		turn_left = False
+		turn_right = False
 		if(current == "goforward"):
 			goforward = True
 		elif(current == "goback"):
