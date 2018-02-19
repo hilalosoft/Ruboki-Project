@@ -209,7 +209,7 @@ def decide(status):
 	if goleft:
 		print "left"
 		publisher_velocity.publish(left_spin)
-		time.sleep(1)
+		time.sleep(1.5)
 		goleft = False
 		inv_command_history.append("goright")
 		return
@@ -217,7 +217,7 @@ def decide(status):
 	if goright:
 		print "right"
 		publisher_velocity.publish(right_spin)
-		time.sleep(1)
+		time.sleep(1.5)
 		goright = False
 		inv_command_history.append("goleft")
 		return
@@ -229,6 +229,7 @@ def decide(status):
 		return
 
 	publisher_velocity.publish(forward)
+	inv_command_history.append("goback")
 	turn_right = False
 	turn_left = False
 	goback = False
