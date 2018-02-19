@@ -86,7 +86,7 @@ def decide(status):
 	global return_base
 	#dist = 0.0
 	#return to base function
-	if len(inv_command_history)>returnstep and returnstep>=0 or return_base:
+	if not inv_command_history = [] and (len(inv_command_history)>returnstep and returnstep>=0 or return_base):
 		if returnstep>20:
 			return_base=True
 		#readfile=open("position.txt","r")
