@@ -122,7 +122,8 @@ def decide(status):
 		time.sleep(1.5)
 		inv_command_history.append("turn_left")
 		turn_right = False
-		goforward = True
+		return
+		
 
 	if turn_left:
 		print "Esco a sinistra"
@@ -130,7 +131,7 @@ def decide(status):
 		time.sleep(1.5)
 		inv_command_history.append("turn_right")
 		turn_left = False
-		goforward = True
+		return
 
 	if goback:
 		print "Indietro\n"
