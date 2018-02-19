@@ -195,7 +195,7 @@ def decide(status):
 		publisher_velocity.publish(ninety_left)
 		time.sleep(1.2)
 		left90 = False
-		if(returnbase):
+		if(return_base):
 			goback = True
 		else:
 			goforward = True
@@ -207,7 +207,7 @@ def decide(status):
 		publisher_velocity.publish(ninety_right)
 		time.sleep(1.2)
 		right90 = False
-		if(returnbase):
+		if(return_base):
 			goback = True
 		else:
 			goforward = True
