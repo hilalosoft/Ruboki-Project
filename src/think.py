@@ -83,7 +83,7 @@ def decide(status):
 	global arrived_base
 	global return_base
 	#dist = 0.0
-	#trun on the return to base function
+	#return to base function
 	if len(inv_command_history)>returnstep and returnstep>=0 or return_base:
 		if returnstep>20:
 			return_base=True
@@ -161,7 +161,7 @@ def decide(status):
 			right90 = True
 			turn = ""
 			
-	if status.left or status.front or status.right or bumped :
+	if (status.left or status.front or status.right or bumped) and not return_base :
 		goback = True
 		print("Ostacolo aggiunto")
 		if status.left:
@@ -272,7 +272,7 @@ def decide(status):
 		return
 
 	if goforward:
-		print("Mi allontano\n")
+		print("Mi allontano")
 		publisher_velocity.publish(forward)
 		inv_command_history.append("goback")
 		outfile=open("position.txt","a")
@@ -285,22 +285,22 @@ def decide(status):
 
 	#publisher_velocity.publish(forward)
 	#inv_command_history.append("goback")
-	outfile=open("position.txt","a")
-	if len(numchar)!=0:
-		count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")+numchar[len(numchar)-1]
-	else:
-		count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")
-	numchar.append(count)
-	outfile.write(repr(status.x)+repr(status.y)+",forward"+"\n")
-	outfile.close()
-	print(count)
+	#outfile=open("position.txt","a")
+	#if len(numchar)!=0:
+	#	count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")+numchar[len(numchar)-1]
+	#else:
+	#	count+=len(repr(status.x))+len(repr(status.y))+len(",forward")+len("\n")
+	#numchar.append(count)
+	#outfile.write(repr(status.x)+repr(status.y)+",forward"+"\n")
+	#outfile.close()
+	#print(count)
 	turn_right = False
 	turn_left = False
 	goback = False
 	goforward = True
 	bumped = False
 	turn = ""
-	print("Avanti")
+	#print("Avanti")
 	
 
 
