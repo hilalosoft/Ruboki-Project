@@ -36,7 +36,7 @@ bumped = False
 arrived_base=False
 return_base=False
 inv_command_history = []
-returnstep = 150
+returnstep = 30
 
 obstacles = []
 
@@ -81,7 +81,7 @@ def decide(status):
 	#dist = 0.0
 
 	
-	if not inv_command_history == [] and (len(inv_command_history)>returnstep and returnstep>=0 or return_base):
+	if not inv_command_history == [] and (len(inv_command_history)>returnstep and returnstep>=0) or return_base:
 		if returnstep>0:
 			return_base=True
 		#readfile=open("position.txt","r")
