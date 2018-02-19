@@ -17,6 +17,7 @@ backward = Twist(Vector3(-0.2,0,0),Vector3(0,0,0))
 backward_obst = Twist(Vector3(-0.1,0,0),Vector3(0,0,0))
 right_spin = Twist(Vector3(0,0,0),Vector3(0,0,-1.5))
 left_spin = Twist(Vector3(0,0,0),Vector3(0,0,1.5))
+stop = Twist(Vector3(0,0,0),Vector3(0,0,0))
 
 inv_command_history = []
 numchar=[]
@@ -72,6 +73,7 @@ def decide(status):
 	global left90
 	global right90
 	global goforward
+	global stop
 	global last_obstacle
 	global backward_obst
 	global turn
@@ -163,6 +165,7 @@ def decide(status):
 			
 	if (status.left or status.front or status.right or bumped) and not return_base :
 		goback = True
+		publisher_velocity.publish(stop)
 		time.sleep(20)
 		print("Ostacolo aggiunto")
 		if status.left:
