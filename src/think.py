@@ -32,12 +32,14 @@ last_obstacle = []
 turn_right = False
 turn_left = False
 bumped = False
-startup = True
 
+startup = True
 arrived_base=False
 return_base=False
 inv_command_history = []
-returnstep = 70
+returnstep = 120
+startpos = [0.0,0.0]
+
 
 obstacles = []
 
@@ -75,12 +77,17 @@ def decide(status):
 	global turn_left
 	global bumped
 	global startup
+	startpos = [0.0,0.0]
 	
 	global arrived_base
 	global return_base
 	global inv_command_history
 	global returnstep
+	global startpos
 	#dist = 0.0
+	
+	if(startup):
+		startpos = [status.x, status.y]
 
 	if not inv_command_history == [] and (len(inv_command_history)>returnstep and returnstep>=0) or return_base:
 		if returnstep>0:
@@ -125,7 +132,7 @@ def decide(status):
 
 	elif len(inv_command_history)>returnstep or returnstep < 0 or arrived_base:
 		if(not arrived_base):
-			print("returned to base!")
+			print("returned to base!" + str(distancce(startpos[0], startpos[1], status.x, status.y))
 			return_base=False
 			arrived_base=True
 		return
