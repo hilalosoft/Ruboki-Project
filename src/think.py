@@ -189,18 +189,16 @@ def decide(status):
 		inv_command_history.append("turn_right")
 		turn_left = False
 		goforward = True
-
-	if goback:
-		print "Indietro\n"
-		publisher_velocity.publish(backward)
-		inv_command_history.append("goforward")
-		return
 	
 	if left90:
 		print "90 left"
 		publisher_velocity.publish(ninety_left)
 		time.sleep(1.2)
 		left90 = False
+		if(returnbase):
+			goback = True
+		else:
+			goforward = True
 		inv_command_history.append("right90")
 		return
 
@@ -209,9 +207,20 @@ def decide(status):
 		publisher_velocity.publish(ninety_right)
 		time.sleep(1.2)
 		right90 = False
+		if(returnbase):
+			goback = True
+		else:
+			goforward = True
 		inv_command_history.append("left90")
 		return
 
+	
+	if goback:
+		print "Indietro\n"
+		publisher_velocity.publish(backward)
+		inv_command_history.append("goforward")
+		return
+	
 	if goleft:
 		print "left"
 		publisher_velocity.publish(left_spin)
