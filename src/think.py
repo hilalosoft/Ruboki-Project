@@ -243,16 +243,19 @@ def decide(status):
 	if goback:
 		print "Indietro\n"
 		publisher_velocity.publish(backward)
+		time.sleep(0.5)
 		inv_command_history.append("goforward")
 		return
 	
 	if goforward:
 		print "Mi allontano\n"
 		publisher_velocity.publish(forward)
+		time.sleep(0.5)
 		inv_command_history.append("goback")
 		return
 
 	publisher_velocity.publish(forward)
+	time.sleep(0.5)
 	inv_command_history.append("goback")
 	turn_right = False
 	turn_left = False
