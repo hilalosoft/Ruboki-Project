@@ -212,7 +212,7 @@ def decide(status):
 		print("Indietro")
 		publisher_velocity.publish(backward)
 		inv_command_history.append("goforward")
-		time.sleep(0.5
+		time.sleep(0.5)
 		#outfile=open("position.txt","a")
 		#count+=len(repr(status.x))+len(repr(status.y))+len(",back")+len("\n")+numchar[len(numchar)-1]
 		goback = False
