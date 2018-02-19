@@ -146,19 +146,7 @@ def decide(status):
 
 
 	#we write in the file all the information about the movement  the position and the desicion made
-	
-	if status.left or status.front or status.right or bumped :
-		goback = True
-		print("Ostacolo aggiunto")
-		if status.left:
-			turn = "right"
-		elif status.right:
-			turn = "left"
-		else:
-			turn = "back"
-		goforward = False
-		bumped = False
-	if not turn == "":
+		if not turn == "":
 		if turn == "left":
 			goback = False
 			goforward = False
@@ -169,12 +157,19 @@ def decide(status):
 			goforward = False
 			right90 = True
 			turn = ""
-		elif turn == "back":
-			goback = True
-			goforward = False
-			left90 = False
-			right90= False
-			turn = ""
+			
+	if status.left or status.front or status.right or bumped :
+		goback = True
+		print("Ostacolo aggiunto")
+		if status.left:
+			turn = "right"
+		elif status.right:
+			turn = "left"
+		else:
+			turn = "left"
+		goforward = False
+		bumped = False
+
 		
 	if turn_right:
 		print("Esco a destra")
@@ -282,7 +277,6 @@ def decide(status):
 		numchar.append(count)
 		outfile.write(repr(status.x)+repr(status.y)+",forward"+"\n")
 		outfile.close()
-		goforward = False
 		print(count)
 		return
 
@@ -300,7 +294,7 @@ def decide(status):
 	turn_right = False
 	turn_left = False
 	goback = False
-	goforward = False
+	goforward = True
 	bumped = False
 	turn = ""
 	print("Avanti")
