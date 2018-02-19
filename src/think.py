@@ -108,11 +108,14 @@ def decide(status):
 			turn_left = True
 		elif(current == "turn_right"):
 			turn_right = True
+		
 
 
 
 
 		returnstep=returnstep-1
+		if returnstep<0:
+			return_base = False
 
 	elif len(inv_command_history)>returnstep or returnstep < 0 or arrived_base:
 		if(not arrived_base):
