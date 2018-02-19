@@ -36,6 +36,7 @@ bumped = False
 arrived_base=False
 return_base=False
 inv_command_history = []
+returnstep = 150
 
 obstacles = []
 
@@ -76,9 +77,51 @@ def decide(status):
 	global arrived_base
 	global return_base
 	global inv_command_history
+	global returnstep
 	#dist = 0.0
 
-	if not last_obstacle == [] and distance(status.x, status.y, last_obstacle[0], last_obstacle[1]) < 0.3:
+	
+	if not inv_command_history == [] and (len(inv_command_history)>returnstep and returnstep>=0 or return_base):
+		if returnstep>0:
+			return_base=True
+		#readfile=open("position.txt","r")
+		#readfile.seek(numchar[len(numchar)-1])
+		#s=readfile.readline()
+		print(inv_command_history[returnstep] + "    " + str(returnstep))
+		current = inv_command_history[returnstep]
+		if(current == "goforward"):
+			goforward = True
+		elif(current == "goback"):
+			goback = True
+		elif(current == "goleft"):
+			goleft = True
+		elif(current == "goright"):
+			goright = True
+		elif(current == "right90"):
+			right90=True
+		elif(current == "left90"):
+			left90 == True
+		elif(current == "turn_left"):
+			turn_left = True
+		elif(current == "turn_right"):
+			turn_right = True
+		
+
+
+
+
+		returnstep=returnstep-1
+		if returnstep<0:
+			return_base = False
+
+	elif len(inv_command_history)>returnstep or returnstep < 0 or arrived_base:
+		if(not arrived_base):
+			print("returned to base!")
+			return_base=False
+			arrived_base=True
+		return
+	
+	if not return_base and not last_obstacle == [] and distance(status.x, status.y, last_obstacle[0], last_obstacle[1]) < 0.3:
 		dist = distance(status.x, status.y, last_obstacle[0], last_obstacle[1])
 		if dist > 0.2 and not goforward:
 			if turn == "left":
