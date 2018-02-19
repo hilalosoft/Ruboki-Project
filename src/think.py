@@ -75,7 +75,6 @@ def decide(status):
 	global turn_left
 	global bumped
 	global startup
-	startpos = [0.0,0.0]
 	
 	global arrived_base
 	global return_base
@@ -140,9 +139,9 @@ def decide(status):
 		dist = distance(status.x, status.y, last_obstacle[0], last_obstacle[1])
 		if dist > 0.2 and not goforward:
 			if turn == "left":
-				turn_left = True
+				left90 = True
 			else:
-				turn_right = True
+				right90 = True
 			goback = False
 	else:		
 		goforward = False
