@@ -109,7 +109,7 @@ def decide(status):
 
 		returnstep=returnstep-1
 
-	elif len(inv_command_history)>returnstep and returnstep>len(inv_command_history)+1:
+	elif len(inv_command_history)>returnstep or returnstep < 0:
 		print("returned to base!")
 		return
 
@@ -133,11 +133,22 @@ def decide(status):
 				print("Vecchio ostacolo")
 				last_obstacle = (obstacle[0], obstacle[1])
 				bumped = True
-				return
+				
 	
 
 
 	#we write in the file all the information about the movement  the position and the desicion made
+	
+	if status.left or status.front or status.right or bumped :
+		goback = True
+		print("Ostacolo aggiunto")
+		if status.left:
+			turn = "right"
+		elif status.right:
+			turn = "left"
+		else:
+			turn = "back"
+		goforward = False
 	if not turn == "":
 		if turn == "left":
 			goback = False
@@ -149,16 +160,13 @@ def decide(status):
 			goforward = False
 			right90 = True
 			turn = ""
-	if (status.left or status.front or status.right) :
-		goback = True
-		print("Ostacolo aggiunto")
-		if status.left:
-			turn = "right"
-		elif status.right:
-			turn = "left"
-		else:
-			turn = "right"
-		goforward = False
+		elif turn == "back":
+			goback = True
+			goforward = False
+			left90 = False
+			right90= False
+			turn = ""
+		
 	if turn_right:
 		print("Esco a destra")
 		publisher_velocity.publish(right_spin)
