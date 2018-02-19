@@ -120,18 +120,18 @@ def decide(status):
 		print "Esco a destra"
 		publisher_velocity.publish(right_spin)
 		time.sleep(1.5)
-		inv_command_history.append("turn_left")
+		inv_command_history.append("goleft")
 		turn_right = False
-		return
+		goforward = True
 		
 
 	if turn_left:
 		print "Esco a sinistra"
 		publisher_velocity.publish(left_spin)
 		time.sleep(1.5)
-		inv_command_history.append("turn_right")
+		inv_command_history.append("goright")
 		turn_left = False
-		return
+		goforward = True
 
 	if goback:
 		print "Indietro\n"
