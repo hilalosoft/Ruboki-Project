@@ -39,6 +39,7 @@ turn_right = False
 turn_left = False
 bumped = False
 arrived_base=False
+return_base=False
 
 obstacles = []
 
@@ -58,7 +59,6 @@ def distance(x1, y1, x2, y2):
 
 def decide(status):
 
-	return_to_base=False
 	#print status.x
 	#print status.y
 	#print status.left
@@ -80,9 +80,12 @@ def decide(status):
 	global bumped
 	global base
 	global returnstep
+	global arrived_base
+	global return_base
 	#dist = 0.0
 	#trun on the return to base function
-	if len(inv_command_history)>returnstep and returnstep>=0:
+	if len(inv_command_history)>returnstep and returnstep>=0 or return_base:
+		return_base=True
 		#readfile=open("position.txt","r")
 		#readfile.seek(numchar[len(numchar)-1])
 		#s=readfile.readline()
@@ -113,6 +116,7 @@ def decide(status):
 	elif len(inv_command_history)>returnstep or returnstep < 0:
 		if(not arrived_base):
 			print("returned to base!")
+			return_base=False
 			arrived_base=True
 		return
 
