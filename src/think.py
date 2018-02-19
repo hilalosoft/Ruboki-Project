@@ -87,6 +87,31 @@ def decide(status):
 		startpos = [status.x, status.y]
 		startup = False
 
+	if not return_base and not last_obstacle == [] and distance(status.x, status.y, last_obstacle[0], last_obstacle[1]) < 0.3:
+		dist = distance(status.x, status.y, last_obstacle[0], last_obstacle[1])
+		if dist > 0.2 and not goforward:
+			if turn == "left":
+				left90 = True
+			else:
+				right90 = True
+			goback = False
+	else:		
+		goforward = False
+
+
+	if not bumped and not return_base:
+
+		for obstacle in obstacles:
+			dist = distance(status.x, status.y, obstacle[0], obstacle[1])
+			if dist < 0.3:
+				print "Vecchio ostacolo"
+				last_obstacle = (obstacle[0], obstacle[1])
+				bumped = True
+				return
+
+		
+
+	
 	if not inv_command_history == [] and (len(inv_command_history)>returnstep and returnstep>=0) or return_base:
 		if returnstep>0:
 			return_base=True
@@ -135,30 +160,7 @@ def decide(status):
 			arrived_base=True
 		return
 	
-	if not return_base and not last_obstacle == [] and distance(status.x, status.y, last_obstacle[0], last_obstacle[1]) < 0.3:
-		dist = distance(status.x, status.y, last_obstacle[0], last_obstacle[1])
-		if dist > 0.2 and not goforward:
-			if turn == "left":
-				left90 = True
-			else:
-				right90 = True
-			goback = False
-	else:		
-		goforward = False
-
-
-	if not bumped and not return_base:
-
-		for obstacle in obstacles:
-			dist = distance(status.x, status.y, obstacle[0], obstacle[1])
-			if dist < 0.3:
-				print "Vecchio ostacolo"
-				last_obstacle = (obstacle[0], obstacle[1])
-				bumped = True
-				return
-
 		
-	
 
 	if not return_base and (status.left or status.front or status.right) :
 		last_obstacle = (status.x, status.y)
