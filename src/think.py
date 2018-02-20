@@ -269,6 +269,8 @@ def think():
 	rospy.init_node('think')
 	rospy.Subscriber("/kobuki_status", Status, decide)
 	atexit.register(exit_handler)
+	rospy.sleep(0.1)
+	time.sleep(0.1)
 	rospy.spin()
 
 
