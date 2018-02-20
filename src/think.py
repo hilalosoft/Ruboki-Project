@@ -38,7 +38,7 @@ startup = True
 arrived_base=False
 return_base=False
 inv_command_history = []
-returnstep = 300
+returnstep = 200
 startpos = [0.0,0.0]
 obstacles = []
 turned = False
@@ -269,8 +269,8 @@ def think():
 	rospy.init_node('think')
 	rospy.Subscriber("/kobuki_status", Status, decide)
 	atexit.register(exit_handler)
-	rospy.sleep(0.05)
-	time.sleep(0.05)
+	rospy.sleep(0.2)
+	time.sleep(0.2)
 	rospy.spin()
 
 
